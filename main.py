@@ -20,12 +20,11 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model.to(device)
 
 # Load the video
-vid = imageio.get_reader('video4.mp4',  'ffmpeg')
-cap = cv2.VideoCapture('video4.mp4')
+vid = imageio.get_reader('video15.mp4',  'ffmpeg')
+cap = cv2.VideoCapture('video15.mp4')
 
 # Get video fps
 fps = int(cap.get(cv2.CAP_PROP_FPS))
-
 # Set frame count and total frames
 count = 0
 total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
