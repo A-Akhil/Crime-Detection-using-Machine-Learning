@@ -21,7 +21,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model.to(device)
 
 # List of video paths
-video_paths = ['video11.mp4']
+video_paths = ['video11.mp4','video12.mp4','video13.mp4']
 
 for video_path in video_paths:
     # Load the video
