@@ -12,27 +12,56 @@ Crime Detection using Machine Learning and web3 is a project that aims to detect
   git clone https://github.com/AkhilAndroid/Crime-Detection-using-Machine-Learning.git
   cd Crime-Detection-using-Machine-Learning-and-web3
 ```
-Now install the dependencies 
+Now install the dependencies for web3
+
 ```bash
   pip install -r requirement.txt
+  pip install web3_auth_django-0.7-py3-none-any.whl
 ```
-Download the pre-trained models and video from Google Drive.  
+If you face any issues while installing web3_auth_django refer this [repo](https://github.com/ahn1305/web3-django-authentication)
+
+And then install python dependencies
+
+```bash
+  pip install -r requirement-main.txt
+```
+
+Download the pre-trained models and video from Google Drive.
 ```bash
 https://bit.ly/40m9Ka4
 ```
 Extract the files and place them in the root directory of the project.
 
+# To run in Docker
+
+First build the Docker file
+```
+sudo docker build -t crime-detection .
+```
+Cerify the image was created
+```
+docker images
+```
+You should see something like this
+```
+crime-detection-app          latest     c7b090dc63   3 days ago      1.22GB
+```
+You can then run the container by
+```
+sudo docker run crime-detection
+```
+And then open http://127.0.0.1:8000/api in browser to access the web interface.
 
 ## Demo
-Run the following command 
+Run the following command
 
 Start the server:
 ```
 python manage.py runserver
 ```
-Make sure you install Metamask in Chrome
+Make sure you install Metamask in
 
-Open http://127.0.0.1:8000/api in Chrome browser to access the web interface.
+Open http://127.0.0.1:8000/api in browser to access the web interface.
 
 Replace video4.mp4 with your video in main.py
 ```
@@ -46,4 +75,15 @@ Now run:
 python main.py
 ```
 
+To check every frame in a video run
+```
+python all_frame_check.py
+```
+
+To run multiple video run
+```
+python multiple_video.py
+```
+
 Check the result in the website
+
