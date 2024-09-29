@@ -9,7 +9,7 @@ Crime Detection using Machine Learning and web3 is a project that aims to detect
 
  Download or clone the repository
 ```bash
-  git clone https://github.com/AkhilAndroid/Crime-Detection-using-Machine-Learning.git
+  git clone https://github.com/A-Akhil/Crime-Detection-using-Machine-Learning.git
   cd Crime-Detection-using-Machine-Learning-and-web3
 ```
 Now install the dependencies for web3
