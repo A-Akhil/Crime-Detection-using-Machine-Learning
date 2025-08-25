@@ -6,7 +6,7 @@ from transformers import ViTFeatureExtractor, ViTForImageClassification
 import requests
 
 # Load the pre-trained model and feature extractor
-model_path = '/home/Akhil/Documents/kk/Crime-Detection-using-Machine-Learning/'
+model_path = './'
 model = ViTForImageClassification.from_pretrained(model_path)
 feature_extractor = ViTFeatureExtractor.from_pretrained(model_path)
 
@@ -20,8 +20,10 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model.to(device)
 
 # Load the video
-vid = imageio.get_reader('video15.mp4',  'ffmpeg')
-cap = cv2.VideoCapture('video15.mp4')
+video_name = "video15.mp4"
+
+vid = imageio.get_reader(video_name, 'ffmpeg')
+cap = cv2.VideoCapture(video_name)
 
 # Get video fps
 fps = int(cap.get(cv2.CAP_PROP_FPS))
