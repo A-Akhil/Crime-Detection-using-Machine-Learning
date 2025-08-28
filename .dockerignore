@@ -1,0 +1,137 @@
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+ENV/
+env.bak/
+venv.bak/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Large model files (exclude the big ones, keep essential configs)
+pytorch_model.bin
+*.bin
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.onnx
+*.pb
+*.pth
+*.pt
+*.tar.gz
+
+# Keep small config files but exclude model data
+models--*/blobs/
+models--*/snapshots/*/pytorch_model.bin
+
+# Dataset and training data (these are huge)
+dataset/
+datasets/
+data/
+training_data/
+test_data/
+
+# Output directories (generated at runtime)
+outputs/
+output/
+crime_detection_output/
+uploads/
+media/
+
+# Video files (these are large test files)
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.wmv
+*.flv
+*.webm
+
+# Generated image files (crime detection outputs)
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.tiff
+*.gif
+*.svg
+
+# Training artifacts
+training_args.bin
+*.log
+logs/
+
+# Temporary files
+temp/
+tmp/
+*.tmp
+
+# Documentation (not needed in container)
+*.md
+rough_note.md
+notes.txt
+TODO.txt
+
+# Database files (create fresh in container)
+crime_detection.db
+*.sqlite
+*.sqlite3
+db.sqlite3
+
+# Platform-specific scripts
+*.ps1
+*.sh
+*.bat
+
+# Jupyter notebooks
+*.ipynb
+.ipynb_checkpoints/
+
+# Development files
+docker-compose.dev.yml
+Dockerfile.dev
+DOCKER_DEV_GUIDE.md
+
+# Environment files
+.env*
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# Build artifacts
+build/
+dist/

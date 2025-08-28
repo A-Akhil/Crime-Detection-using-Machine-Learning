@@ -242,7 +242,7 @@ TODO.txt
 *.bat
 
 # Docker development
-.dockerignore
+# .dockerignore
 
 # API keys and secrets
 .env.local
