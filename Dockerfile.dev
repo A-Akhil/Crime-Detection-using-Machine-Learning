@@ -4,26 +4,24 @@ FROM python:3.9
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    python3-dev \
-    && rm -rf /var/lib/apt/lists/*
-
 # Set work directory
 WORKDIR /code
 
-# Install Python dependencies
+# Install Python dependencies first (for better caching)
 COPY requirement.txt /code/
 RUN pip install --no-cache-dir -r requirement.txt
+
+# Install system dependencies (using apt instead of apt-get for consistency with original)
+RUN apt update && apt install python3-dev -y
 
 # Copy and install the wheel package
 COPY web3_auth_django-0.7-py3-none-any.whl /code/
 RUN pip install web3_auth_django-0.7-py3-none-any.whl
 
-# Copy project files (for initial setup)
+# Copy project files
 COPY . /code/
 
-# Run migrations and setup (only for initial container creation)
+# Run migrations (with error handling for development)
 RUN python manage.py makemigrations || true
 RUN python manage.py migrate || true
 
