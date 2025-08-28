@@ -10,10 +10,15 @@ services:
     volumes:
       # Mount the entire project directory for live development
       - .:/code
+      # Mount database as a volume to persist data
+      - ./db.sqlite3:/code/db.sqlite3
       # Exclude certain directories to avoid conflicts
       - /code/venv
       - /code/__pycache__
       - /code/.git
+      - /code/dataset
+      - /code/outputs
+      - /code/crime_detection_output
     environment:
       - DEBUG=1
       - PYTHONPATH=/code
