@@ -4,6 +4,7 @@ import torch
 import imageio
 from transformers import ViTFeatureExtractor, ViTForImageClassification
 import requests
+import os
 
 # Load the pre-trained model and feature extractor
 model_path = './'
@@ -72,6 +73,19 @@ while cap.isOpened():
                 files = {'image': open(filename, 'rb')}
                 data = {'text': filename, 'image': image}
                 response = requests.post(url, files=files, data=data)
+                
+                # Close the file handle
+                files['image'].close()
+                
+                # Delete the local file after successful upload
+                if response.status_code == 200:
+                    try:
+                        os.remove(filename)
+                        print(f"Deleted local file: {filename}")
+                    except OSError as e:
+                        print(f"Error deleting file {filename}: {e}")
+                else:
+                    print(f"API upload failed with status code: {response.status_code}")
                 break
 
 cap.release()
