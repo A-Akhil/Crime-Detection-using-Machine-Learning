@@ -15,7 +15,7 @@ def web_three_auth(request):
     return render(request, "imagesend/login.html")
 
 def view_images(request):
-    img_data = SendImage.objects.all()
+    img_data = SendImage.objects.all().order_by('-id')
     return render(request, "imagesend/view_images.html", {'data': img_data})
 
 

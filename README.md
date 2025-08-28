@@ -26,9 +26,9 @@ And then install python dependencies
   pip install -r requirement-main.txt
 ```
 
-Download the pre-trained models and video from Google Drive.
+Download the pre-trained models and video from HuggingFace.
 ```bash
-https://bit.ly/40m9Ka4
+https://huggingface.co/AnonY0324/Crime-detection-vit
 ```
 Extract the files and place them in the root directory of the project.
 
