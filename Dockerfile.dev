@@ -1,0 +1,34 @@
+FROM python:3.9
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    python3-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set work directory
+WORKDIR /code
+
+# Install Python dependencies
+COPY requirement.txt /code/
+RUN pip install --no-cache-dir -r requirement.txt
+
+# Copy and install the wheel package
+COPY web3_auth_django-0.7-py3-none-any.whl /code/
+RUN pip install web3_auth_django-0.7-py3-none-any.whl
+
+# Copy project files (for initial setup)
+COPY . /code/
+
+# Run migrations and setup (only for initial container creation)
+RUN python manage.py makemigrations || true
+RUN python manage.py migrate || true
+
+# Expose port
+EXPOSE 8000
+
+# Command to run the application
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

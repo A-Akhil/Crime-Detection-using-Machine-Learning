@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount the entire project directory for live development
+      - .:/code
+      # Exclude certain directories to avoid conflicts
+      - /code/venv
+      - /code/__pycache__
+      - /code/.git
+    environment:
+      - DEBUG=1
+      - PYTHONPATH=/code
+    # Keep container running and restart on changes
+    stdin_open: true
+    tty: true
+    # Override default command for development
+    command: python manage.py runserver 0.0.0.0:8000
+    # Restart policy for development
+    restart: unless-stopped

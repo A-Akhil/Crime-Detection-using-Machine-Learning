@@ -236,6 +236,14 @@ rough_note.md
 notes.txt
 TODO.txt
 
+# Platform-specific scripts
+*.ps1
+*.sh
+*.bat
+
+# Docker development
+.dockerignore
+
 # API keys and secrets
 .env.local
 .env.production
